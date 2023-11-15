@@ -360,11 +360,11 @@ function initLine() {
   liff.init(
     { liffId: "2001677131-XKqMJqML" },
     () => {
-      // if (liff.isLoggedIn()) {
-      runApp();
-      // } else {
-      //   liff.login();
-      // }
+      if (liff.isLoggedIn()) {
+        runApp();
+      } else {
+        liff.login();
+      }
     },
     (err) => console.error(err)
   );
