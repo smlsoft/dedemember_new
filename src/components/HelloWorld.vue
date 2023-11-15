@@ -20,7 +20,7 @@
           <dd
             class="mt-6 text-base font-semibold leading-6 text-gray-900 py-auto"
           >
-            Welcome to DEDE member
+            Welcome to DEDE member ddd
             <!-- Have a good day
             {{ displayName }} Scrambernont ! -->
           </dd>
@@ -360,11 +360,11 @@ function initLine() {
   liff.init(
     { liffId: "2001677131-XKqMJqML" },
     () => {
-      if (liff.isLoggedIn()) {
-        runApp();
-      } else {
-        liff.login();
-      }
+      // if (liff.isLoggedIn()) {
+      runApp();
+      // } else {
+      //   liff.login();
+      // }
     },
     (err) => console.error(err)
   );
