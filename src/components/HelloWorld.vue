@@ -283,10 +283,10 @@ const userId = ref("");
 const statusMessage = ref("");
 const displayName = ref("");
 const idToken = ref("");
-// const friend = ref("");
+const friend = ref("");
 // const roomId = ref("");
 // const groupId = ref("");
-// const isfriend = ref(true);
+const isfriend = ref(true);
 // onMounted(async () => {
 //   liff.init(
 //     { liffId: "2000714922-XOb4DG4e" },
@@ -319,21 +319,21 @@ const idToken = ref("");
 //     console.error("Error getting user profile:", error);
 //   }
 // }
-// async function sendMsg() {
-//   try {
-//     if (liff.getContext().type !== "none") {
-//       await liff.sendMessages([
-//         {
-//           type: "text",
-//           text: userId.value,
-//         },
-//       ]);
-//       console.log("Message sent successfully!");
-//     }
-//   } catch (error) {
-//     console.error("Error in sending message", error);
-//   }
-// }
+async function sendMsg() {
+  try {
+    if (liff.getContext().type !== "none") {
+      await liff.sendMessages([
+        {
+          type: "text",
+          text: userId.value,
+        },
+      ]);
+      console.log("Message sent successfully!");
+    }
+  } catch (error) {
+    console.error("Error in sending message", error);
+  }
+}
 
 // function getContext() {
 //   type.value = liff.getContext().type;
@@ -354,38 +354,38 @@ const idToken = ref("");
 //   liff.logout();
 //   window.location.reload();
 // }
-// async function getfriend() {
-//   try {
-//     const friendshipStatus = await liff.getFriendship();
-//     friend.value = friendshipStatus;
-//     return friend.value.friendFlag; // Ensure that 'friendFlag' is the correct property name
-//   } catch (error) {
-//     console.error("Error fetching friendship status:", error);
-//     return false;
-//   }
-// }
-// async function waitfriend() {
-//   isfriend.value = await getfriend();
-//   console.log(isfriend.value);
-//   if (isfriend.value == false) {
-//     alert("please add friend");
-//     window.location.href = "https://lin.ee/qdbnDDV";
-//   } else {
-//     runApp();
-//     sendMsg();
-//   }
-// }
+async function getfriend() {
+  try {
+    const friendshipStatus = await liff.getFriendship();
+    friend.value = friendshipStatus;
+    return friend.value.friendFlag; // Ensure that 'friendFlag' is the correct property name
+  } catch (error) {
+    console.error("Error fetching friendship status:", error);
+    return false;
+  }
+}
+async function waitfriend() {
+  isfriend.value = await getfriend();
+  console.log(isfriend.value);
+  if (isfriend.value == false) {
+    alert("please add friend");
+    window.location.href = "https://lin.ee/qdbnDDV";
+  } else {
+    runApp();
+    sendMsg();
+  }
+}
 
 function initLine() {
   liff.init(
     { liffId: "2001677131-XKqMJqML" },
     () => {
-      // if (liff.isLoggedIn()) {
-      runApp();
-      // waitfriend();
-      // } else {
-      //   liff.login();
-      // }
+      if (liff.isLoggedIn()) {
+        runApp();
+        waitfriend();
+      } else {
+        liff.login();
+      }
     },
     (err) => console.error(err)
   );
