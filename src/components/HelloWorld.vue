@@ -57,7 +57,7 @@
         </div>
         <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
           <dd class="text-sm leading-6 text-gray-500">
-            <p>roomId: {{ roomId }}</p>
+            <p>profileID: {{ userId }}</p>
           </dd>
         </div>
         <div class="mt-4 flex w-full flex-none gap-x-4 px-6">
@@ -284,7 +284,7 @@ const statusMessage = ref("");
 const displayName = ref("");
 const idToken = ref("");
 const friend = ref("");
-const roomId = ref("");
+// const roomId = ref("");
 const groupId = ref("");
 const isfriend = ref(true);
 // onMounted(async () => {
@@ -368,7 +368,7 @@ async function getfriend() {
 async function waitfriend() {
   isfriend.value = await getfriend();
   console.log(isfriend.value);
-  if (!isfriend.value) {
+  if (isfriend.value == false) {
     alert("please add friend");
     window.location.href = "https://lin.ee/qdbnDDV";
   } else {
