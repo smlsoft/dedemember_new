@@ -356,14 +356,21 @@ function logout() {
   window.location.reload();
 }
 async function getfriend() {
-  friend.value = await liff.getfriendship();
-  return friend.value.friendflag;
+  try {
+    const friendshipStatus = await liff.getFriendship();
+    friend.value = friendshipStatus;
+    return friend.value.friendFlag; // Ensure that 'friendFlag' is the correct property name
+  } catch (error) {
+    console.error("Error fetching friendship status:", error);
+    return false;
+  }
 }
 async function waitfriend() {
   isfriend.value = await getfriend();
+  console.log(isfriend.value);
   if (!isfriend.value) {
     alert("please add friend");
-    window.location = "https://lin.ee/qdbnDDV";
+    window.location.href = "https://lin.ee/qdbnDDV";
   } else {
     runApp();
   }
