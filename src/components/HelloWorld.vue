@@ -369,7 +369,7 @@ async function waitfriend() {
   }
 }
 
-async function initLine() {
+function initLine() {
   liff.init(
     { liffId: "2001677131-XKqMJqML" },
     () => {
