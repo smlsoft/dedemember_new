@@ -283,10 +283,10 @@ const userId = ref("");
 const statusMessage = ref("");
 const displayName = ref("");
 const idToken = ref("");
-
+const friend = ref("");
 const roomId = ref("");
 const groupId = ref("");
-
+const isfriend = ref(true);
 // onMounted(async () => {
 //   liff.init(
 //     { liffId: "2000714922-XOb4DG4e" },
@@ -355,13 +355,27 @@ function logout() {
   liff.logout();
   window.location.reload();
 }
+async function getfriend() {
+  friend.value = await liff.getfriendship();
+  return friend.value.friendflag;
+}
+async function waitfriend() {
+  isfriend.value = await getfriend();
+  if (!isfriend.value) {
+    alert("please add friend");
+    window.location = "https://lin.ee/qdbnDDV";
+  } else {
+    runApp();
+  }
+}
 
-function initLine() {
+async function initLine() {
   liff.init(
     { liffId: "2001677131-XKqMJqML" },
     () => {
       if (liff.isLoggedIn()) {
         runApp();
+        waitfriend();
       } else {
         liff.login();
       }
