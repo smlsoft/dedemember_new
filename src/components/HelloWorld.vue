@@ -319,22 +319,21 @@ const isfriend = ref(true);
 //     console.error("Error getting user profile:", error);
 //   }
 // }
-// // async function sendMsg() {
-// //   try {
-// //     if (liff.getContext().type !== "none") {
-// //       await liff.sendMessages([
-// //         {
-// //           type: "sticker",
-// //           stickerId: "11",
-// //           packageId: "1",
-// //         },
-// //       ]);
-// //       console.log("Message sent successfully!");
-// //     }
-// //   } catch (error) {
-// //     console.error("Error in sending message", error);
-// //   }
-// // }
+async function sendMsg() {
+  try {
+    if (liff.getContext().type !== "none") {
+      await liff.sendMessages([
+        {
+          type: "text",
+          text: userId.value,
+        },
+      ]);
+      console.log("Message sent successfully!");
+    }
+  } catch (error) {
+    console.error("Error in sending message", error);
+  }
+}
 
 // function getContext() {
 //   type.value = liff.getContext().type;
@@ -373,6 +372,7 @@ async function waitfriend() {
     window.location.href = "https://lin.ee/qdbnDDV";
   } else {
     runApp();
+    sendMsg();
   }
 }
 
