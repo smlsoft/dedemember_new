@@ -16,14 +16,13 @@
               />
             </div>
           </div>
-
-          <dd
-            class="mt-6 text-base font-semibold leading-6 text-gray-900 py-auto"
-          >
-            Welcome to DEDE member
-            <!-- Have a good day
-            {{ displayName }} Scrambernont ! -->
-          </dd>
+          <div class="flex items-center justify-center">
+            <div>
+              <div class="h-16 w-16 rounded-xl mx-auto">
+                Welcome to DEDE member
+              </div>
+            </div>
+          </div>
         </div>
         <div class="flex-none self-end px-6 pt-4">
           <dt class="sr-only"></dt>

@@ -2,7 +2,7 @@ Update Page
 เมื่อเราจะ update Vue.js project ให้ทำดังนี้
 
 git checkout ไปยัง master
-git checkout master
+git checkout main
 แก้ .gitignore ให้กลับไปเหมือนเดิม
 
 git checkout .gitignore
@@ -22,8 +22,7 @@ comment /dist ใน .gitignore อีกครั้ง
 <!-- #/dist -->
 
 Build Production
-yarn build
-Git add dist
+npm run build
 git add dist
 Git commit
 git commit -m "Update Static"
