@@ -1,4 +1,4 @@
 module.exports = {
   productionSourceMap: false,
-  publicPath: "/dedemember_new/",
+  publicPath: "/dedememberLiff_new/",
 };
