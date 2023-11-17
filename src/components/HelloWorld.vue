@@ -18,9 +18,7 @@
           </div>
           <div class="flex items-center justify-center">
             <div>
-              <div class="h-16 w-16 rounded-xl mx-auto">
-                Welcome to DEDE member
-              </div>
+              <div class="pt-6 rounded-xl mx-auto">Welcome to DEDE member</div>
             </div>
           </div>
         </div>
