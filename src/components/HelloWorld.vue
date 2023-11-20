@@ -370,7 +370,6 @@ async function waitfriend() {
     window.location.href = "https://lin.ee/qdbnDDV";
   } else {
     runApp();
-    sendMsg();
   }
 }
 
@@ -400,7 +399,9 @@ function runApp() {
       statusMessage.value = profile.statusMessage;
       userId.value = profile.userId;
     })
+
     .catch((err) => console.error(err));
+  sendMsg();
 }
 
 onMounted(() => {
