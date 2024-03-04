@@ -390,6 +390,9 @@ function initLine() {
 
 function runApp() {
   idToken.value = liff.getIDToken();
+
+  console.log("lift Token: ", idToken.value);
+  
   liff
     .getProfile()
     .then((profile) => {
