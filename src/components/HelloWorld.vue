@@ -36,10 +36,13 @@
               />
             </div>
             <div class="ml-3">
-              <p
-                class="text-sm font-medium text-gray-700 group-hover:text-gray-900"
-              >
+              <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900" >
                 {{ displayName }}
+              </p>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900" >
+                Shop ID: {{ shopID }}
               </p>
             </div>
           </div>
@@ -282,6 +285,7 @@ const statusMessage = ref("");
 const displayName = ref("");
 const idToken = ref("");
 const friend = ref("");
+const shopID = ref("");
 // const roomId = ref("");
 // const groupId = ref("");
 const isfriend = ref(true);
@@ -389,7 +393,7 @@ function initLine() {
 }
 
 function runApp() {
-  idToken.value = liff.getIDToken();
+  idToken.value = liff.getAccessToken();
 
   console.log("lift Token: ", idToken.value);
   
@@ -404,7 +408,15 @@ function runApp() {
     })
 
     .catch((err) => console.error(err));
-  sendMsg();
+  // sendMsg();
+}
+
+function urlParams(){
+  const searchParams = new URLSearchParams(window.location.search);
+
+  if (searchParams.has("shopid")) {
+    shopID.value = searchParams.get("shopid");
+  }
 }
 
 onMounted(() => {
