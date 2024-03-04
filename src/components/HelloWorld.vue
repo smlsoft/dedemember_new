@@ -321,21 +321,22 @@ const isfriend = ref(true);
 //     console.error("Error getting user profile:", error);
 //   }
 // }
-async function sendMsg() {
-  try {
-    if (liff.getContext().type !== "none") {
-      await liff.sendMessages([
-        {
-          type: "text",
-          text: userId.value,
-        },
-      ]);
-      console.log("Message sent successfully!");
-    }
-  } catch (error) {
-    console.error("Error in sending message", error);
-  }
-}
+
+// async function sendMsg() {
+//   try {
+//     if (liff.getContext().type !== "none") {
+//       await liff.sendMessages([
+//         {
+//           type: "text",
+//           text: userId.value,
+//         },
+//       ]);
+//       console.log("Message sent successfully!");
+//     }
+//   } catch (error) {
+//     console.error("Error in sending message", error);
+//   }
+// }
 
 // function getContext() {
 //   type.value = liff.getContext().type;
@@ -396,6 +397,7 @@ function runApp() {
   idToken.value = liff.getAccessToken();
 
   console.log("lift Token: ", idToken.value);
+  showUrlParams();
   
   liff
     .getProfile()
@@ -408,10 +410,11 @@ function runApp() {
     })
 
     .catch((err) => console.error(err));
+
   // sendMsg();
 }
 
-function urlParams(){
+function showUrlParams(){
   const searchParams = new URLSearchParams(window.location.search);
 
   if (searchParams.has("shopid")) {
